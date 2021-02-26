@@ -5,5 +5,6 @@ pkgs.mkShell {
 		ninja
 		wxGTK31-gtk3
 		gmp
+		gmock
 	];
 }
