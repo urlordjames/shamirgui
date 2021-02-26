@@ -1,6 +1,9 @@
 project("shamirgui")
 cmake_minimum_required(VERSION 3.7)
 
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
 # include wxWidgets
 find_package(wxWidgets COMPONENTS base core REQUIRED)
 include(${wxWidgets_USE_FILE})
