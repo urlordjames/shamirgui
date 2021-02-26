@@ -3,22 +3,26 @@ name: "build and test"
 on: ["push", "pull_request"]
 
 jobs:
-  build:
+  build-and-test:
     runs-on: "ubuntu-latest"
     container: "debian:10"
 
     steps:
     - name: "dependancies"
-      run: "apt-get update && apt-get install gcc g++ cmake ninja-build libwxgtk3.0-dev libgmp-dev -y"
+      run: "apt-get update && apt-get install gcc g++ cmake ninja-build libwxgtk3.0-dev libgmp-dev libgtest-dev -y"
 
     - uses: "actions/checkout@v2"
 
     - name: "configure cmake"
-      run: "mkdir build && cd build && cmake --configure .. -GNinja -DCMAKE_BUILD_TYPE=Release"
+      run: "mkdir build && cd build && cmake --configure .. -GNinja -DBUILD_TESTING=on"
 
     - name: "build project"
       run: "cmake --build . -j 2"
       working-directory: "build"
+
+    - name: "run test"
+      run: "./shamirtest"
+      working-directory: "build/tests"
 
     - name: "make release directory"
       run: "mkdir release && cp build/shamirgui release"
