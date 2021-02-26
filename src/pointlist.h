@@ -1,3 +1,4 @@
+#include <vector>
 #include <wx/wx.h>
 #include <gmpxx.h>
 #include "point.h"

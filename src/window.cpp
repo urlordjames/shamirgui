@@ -1,6 +1,7 @@
+#include <vector>
+#include <gmpxx.h>
 #include "window.h"
 #include "shamir.h"
-#include <gmpxx.h>
 
 wxBEGIN_EVENT_TABLE(fMain, wxFrame)
 	EVT_BUTTON(1, fMain::clickCalculate)
