@@ -15,10 +15,9 @@ add_executable(${PROJECT_NAME} WIN32
 	src/point.cpp
 )
 
-# add shamir.cpp as static library for tests
+# add shamirlib
 add_library(shamirlib STATIC shamirlib/shamir.cpp)
-target_include_directories(${PROJECT_NAME} PRIVATE shamirlib)
-target_link_libraries(${PROJECT_NAME} PRIVATE shamirlib)
+set_target_properties(shamirlib PROPERTIES INTERFACE_INCLUDE_DIRECTORIES ${CMAKE_SOURCE_DIR}/shamirlib)
 
 if(BUILD_TESTING)
 	find_package(GTest REQUIRED)
@@ -31,3 +30,6 @@ target_link_libraries(${PROJECT_NAME} PRIVATE ${wxWidgets_LIBRARIES})
 # gmp
 find_library(GMP_LIBRARY gmp REQUIRED)
 target_link_libraries(${PROJECT_NAME} PRIVATE gmp)
+
+# link shamirlib
+target_link_libraries(${PROJECT_NAME} PRIVATE shamirlib)
