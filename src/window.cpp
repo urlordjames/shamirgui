@@ -4,8 +4,8 @@
 #include "shamir.h"
 
 wxBEGIN_EVENT_TABLE(fMain, wxFrame)
-	EVT_BUTTON(1, fMain::clickCalculate)
-	EVT_SPINCTRL(2, fMain::scrollSpinner)
+	EVT_BUTTON(wxID_REFRESH, fMain::clickCalculate)
+	EVT_SPINCTRL(1, fMain::scrollSpinner)
 wxEND_EVENT_TABLE()
 
 fMain::fMain(): wxFrame(NULL, wxID_ANY, "shamir gui") {
@@ -22,8 +22,8 @@ fMain::fMain(): wxFrame(NULL, wxID_ANY, "shamir gui") {
 	row->Add(leftpanel, 1, wxEXPAND | wxALL, 10);
 	row->Add(rightpanel, 1, wxEXPAND | wxALL, 10);
 
-	button = new wxButton(this, 1, "calculate", wxDefaultPosition, wxDefaultSize);
-	k = new wxSpinCtrl(this, 2, "k", wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 2, 15, initk);
+	button = new wxButton(this, wxID_REFRESH);
+	k = new wxSpinCtrl(this, 1, "k", wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 2, 15, initk);
 
 	leftpanel->Add(k, 1, wxEXPAND | wxALL, 10);
 	
