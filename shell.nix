@@ -1,8 +1,11 @@
 { pkgs ? import <nixpkgs> {} }:
 pkgs.mkShell {
-	buildInputs = with pkgs; [
+	nativeBuildInputs = with pkgs; [
 		cmake
 		ninja
+	];
+
+	buildInputs = with pkgs; [
 		wxGTK31-gtk3
 		gmp
 		gmock
