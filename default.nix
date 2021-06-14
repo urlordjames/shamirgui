@@ -1,14 +1,22 @@
 let pkgs = import <nixpkgs> {};
-in pkgs.stdenv.mkDerivation {
+in pkgs.stdenv.mkDerivation rec {
 	pname = "shamirgui";
 	version = "0.1.0";
 
 	src = ./.;
 
-	nativeBuildInputs = with pkgs; [ cmake ];
+	nativeBuildInputs = [ pkgs.cmake ];
 
 	buildInputs = with pkgs; [
 		wxGTK31-gtk3
 		gmp
 	];
+
+	checkInputs = [ pkgs.gmock ];
+
+	cmakeFlags = [ "-DBUILD_TESTING=${if doCheck then "YES" else "no"}" ];
+
+	checkPhase = "./tests/shamirtest";
+
+	doCheck = true;
 }

@@ -35,4 +35,4 @@ target_link_libraries(${PROJECT_NAME} PRIVATE gmp)
 target_link_libraries(${PROJECT_NAME} PRIVATE shamirlib)
 
 # install
-install(TARGETS ${PROJECT_NAME} DESTINATION ${CMAKE_INSTALL_BINDIR})
+install(TARGETS ${PROJECT_NAME} RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
