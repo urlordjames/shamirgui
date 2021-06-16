@@ -14,7 +14,7 @@ in pkgs.stdenv.mkDerivation rec {
 
 	checkInputs = [ pkgs.gmock ];
 
-	cmakeFlags = [ "-DBUILD_TESTING=${if doCheck then "YES" else "NO"}" ];
+	cmakeFlags = [ "-DBUILD_TESTING=${if doCheck then "ON" else "OFF"}" ];
 
 	checkPhase = "./tests/shamirtest";
 
